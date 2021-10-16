@@ -26,6 +26,11 @@ To run web go to wev/ and run
     npm i
     ng serve --port 8080
     
+Test
+
+    npm run test
+    
+    
 ## PART III
 
     docker run -ti -p 8080:8080 md-wiki:2019
