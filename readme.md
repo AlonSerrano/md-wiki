@@ -21,7 +21,7 @@ Test
     
 ## PART II
 
-To run web go to wev/ and run
+To run web go to web/ and run
 
     npm i
     ng serve --port 8080
