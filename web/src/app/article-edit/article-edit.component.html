@@ -1,0 +1,33 @@
+<div class="container px-4 py-5">
+    <div *ngIf="!showPreview">
+        <form [formGroup]="articleForm" (ngSubmit)="save()">
+            <label for="address" class="form-label">Name</label>
+            <input formControlName="name" type="text" class="form-control" id="address" placeholder="Title" required>
+            <div class="invalid-feedback">
+                Please enter a name.
+            </div>
+
+            <label for="address" class="pt-3 form-label">Text</label>
+            <textarea formControlName="text" class="form-control" id="exampleFormControlTextarea1" rows="2"></textarea>
+            <div class="invalid-feedback">
+                Please enter a name.
+            </div>
+
+            <div class="pt-3 pb-2">
+                <button class="btn btn-primary" type="submit" [disabled]="!articleForm.valid">
+                    Save article
+                </button>
+                <button class="btn btn-info ml-2" type="button" [disabled]="!articleForm.valid" (click)="preview()">
+                    Preview
+                </button>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="showPreview">
+        <button class="btn btn-info ml-2" type="button" (click)="preview()">
+            Back
+        </button>
+        <h1>{{article.name}}</h1>
+        <p style="white-space: pre-line" [innerHTML]="article.text" class="lead"></p>
+    </div>
+</div>

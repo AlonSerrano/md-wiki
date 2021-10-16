@@ -1,0 +1,47 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+    web:
+      name: Web
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./web
+
+      steps:
+        - uses: actions/checkout@v1
+        - name: Use Node.js 12.22
+          uses: actions/setup-node@v1
+          with:
+            node-version: 12.22
+
+        - name: Install dependencies
+          run: npm install
+        - name: Build
+          run: npm run build -- --prod
+        - name: Test
+          run: npm test -- --configuration=ci
+    api:
+      name: Api
+      runs-on: ubuntu-latest
+      defaults:
+        run:
+          working-directory: ./api
+
+      steps:
+        - uses: actions/checkout@v2
+        - name: Setup go
+          uses: actions/setup-go@v2
+          with:
+            go-version: ${{ matrix.go }}
+        
+        - name: Install dependencies
+          run: go build
+        - name: Test
+          run: go test ./...
