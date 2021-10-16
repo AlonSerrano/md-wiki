@@ -20,7 +20,7 @@ describe('ArticleEditComponent', () => {
       providers: [
         {
           provide: ActivatedRoute,
-          useValue: { paramMap: of(convertToParamMap({ name: null })) }
+          useValue: { paramMap: of(convertToParamMap({ name: "Test" })) }
         },
         {
           provide: AppService,
