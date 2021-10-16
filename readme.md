@@ -2,6 +2,7 @@
 
 To run the service please download the repository and run
 
+    docker build . -t "md-wiki:2019"
     docker run -ti -p 8080:8080 -p 9090:9090 md-wiki:2019
 
 Example of final app
